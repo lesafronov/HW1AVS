@@ -1,0 +1,238 @@
+.LC0:
+        .string "Enter length of array A:"
+.LC1:
+        .string "%s"
+.LC2:
+        .string "Incorrect input,enter 1 < number < 21"
+parse_input:
+        pushq   %rbp
+        movq    %rsp, %rbp
+        subq    $1008, %rsp
+        movl    $.LC0, %edi
+        call    puts
+.L4:
+        leaq    -1008(%rbp), %rax
+        movq    %rax, %rsi
+        movl    $.LC1, %edi
+        movl    $0, %eax
+        call    __isoc99_scanf
+        leaq    -1008(%rbp), %rax
+        movq    %rax, %rdi
+        call    atoi
+        movl    %eax, -4(%rbp)
+        cmpl    $1, -4(%rbp)
+        jle     .L2
+        cmpl    $20, -4(%rbp)
+        jle     .L3
+.L2:
+        movl    $.LC2, %edi
+        call    puts
+.L3:
+        cmpl    $1, -4(%rbp)
+        jle     .L4
+        cmpl    $20, -4(%rbp)
+        jg      .L4
+        nop
+        leave
+        ret
+.LC3:
+        .string "Enter value of element of array_A A with number "
+.LC4:
+        .string "%d"
+.LC5:
+        .string ":"
+.LC6:
+        .string "Incorrect input,enter -1000 < number < 1000"
+.LC7:
+        .string "Enter X that will build array B:"
+.LC8:
+        .string "Incorrect input,enter -100 < number < 100"
+main:
+        pushq   %rbp
+        movq    %rsp, %rbp
+        pushq   %r15
+        pushq   %r14
+        pushq   %r13
+        pushq   %r12
+        pushq   %rbx
+        subq    $1112, %rsp
+        movq    %rsp, %rax
+        movq    %rax, %rbx
+        movl    $0, %eax
+        call    parse_input
+        movl    %eax, -68(%rbp)
+        movl    -68(%rbp), %eax
+        movslq  %eax, %rdx
+        subq    $1, %rdx
+        movq    %rdx, -80(%rbp)
+        movslq  %eax, %rdx
+        movq    %rdx, -1136(%rbp)
+        movq    $0, -1128(%rbp)
+        movslq  %eax, %rdx
+        movq    %rdx, -1152(%rbp)
+        movq    $0, -1144(%rbp)
+        cltq
+        leaq    0(,%rax,4), %rdx
+        movl    $16, %eax
+        subq    $1, %rax
+        addq    %rdx, %rax
+        movl    $16, %ecx
+        movl    $0, %edx
+        divq    %rcx
+        imulq   $16, %rax, %rax
+        subq    %rax, %rsp
+        movq    %rsp, %rax
+        addq    $3, %rax
+        shrq    $2, %rax
+        salq    $2, %rax
+        movq    %rax, -88(%rbp)
+        movl    -68(%rbp), %eax
+        movslq  %eax, %rdx
+        subq    $1, %rdx
+        movq    %rdx, -96(%rbp)
+        movslq  %eax, %rdx
+        movq    %rdx, %r14
+        movl    $0, %r15d
+        movslq  %eax, %rdx
+        movq    %rdx, %r12
+        movl    $0, %r13d
+        cltq
+        leaq    0(,%rax,4), %rdx
+        movl    $16, %eax
+        subq    $1, %rax
+        addq    %rdx, %rax
+        movl    $16, %esi
+        movl    $0, %edx
+        divq    %rsi
+        imulq   $16, %rax, %rax
+        subq    %rax, %rsp
+        movq    %rsp, %rax
+        addq    $3, %rax
+        shrq    $2, %rax
+        salq    $2, %rax
+        movq    %rax, -104(%rbp)
+        movl    $0, -52(%rbp)
+        jmp     .L6
+.L10:
+        movl    $.LC3, %esi
+        movl    $.LC1, %edi
+        movl    $0, %eax
+        call    printf
+        movl    -52(%rbp), %eax
+        addl    $1, %eax
+        movl    %eax, %esi
+        movl    $.LC4, %edi
+        movl    $0, %eax
+        call    printf
+        movl    $.LC5, %edi
+        call    puts
+.L9:
+        leaq    -1120(%rbp), %rax
+        movq    %rax, %rsi
+        movl    $.LC1, %edi
+        movl    $0, %eax
+        call    __isoc99_scanf
+        leaq    -1120(%rbp), %rax
+        movq    %rax, %rdi
+        call    atoi
+        movl    %eax, -108(%rbp)
+        cmpl    $-999, -108(%rbp)
+        jl      .L7
+        cmpl    $999, -108(%rbp)
+        jle     .L8
+.L7:
+        movl    $.LC6, %edi
+        call    puts
+.L8:
+        cmpl    $-999, -108(%rbp)
+        jl      .L9
+        cmpl    $999, -108(%rbp)
+        jg      .L9
+        movq    -88(%rbp), %rax
+        movl    -52(%rbp), %edx
+        movslq  %edx, %rdx
+        movl    -108(%rbp), %ecx
+        movl    %ecx, (%rax,%rdx,4)
+        addl    $1, -52(%rbp)
+.L6:
+        movl    -52(%rbp), %eax
+        cmpl    -68(%rbp), %eax
+        jl      .L10
+.L13:
+        movl    $.LC7, %edi
+        call    puts
+        leaq    -1120(%rbp), %rax
+        movq    %rax, %rsi
+        movl    $.LC1, %edi
+        movl    $0, %eax
+        call    __isoc99_scanf
+        leaq    -1120(%rbp), %rax
+        movq    %rax, %rdi
+        call    atoi
+        movl    %eax, -108(%rbp)
+        cmpl    $-999, -108(%rbp)
+        jl      .L11
+        cmpl    $999, -108(%rbp)
+        jle     .L12
+.L11:
+        movl    $.LC8, %edi
+        call    puts
+.L12:
+        cmpl    $-99, -108(%rbp)
+        jl      .L13
+        cmpl    $99, -108(%rbp)
+        jg      .L13
+        movl    $0, -56(%rbp)
+        movl    $0, -60(%rbp)
+        jmp     .L14
+.L16:
+        movq    -88(%rbp), %rax
+        movl    -60(%rbp), %edx
+        movslq  %edx, %rdx
+        movl    (%rax,%rdx,4), %eax
+        cltd
+        idivl   -108(%rbp)
+        movl    %edx, %eax
+        testl   %eax, %eax
+        jne     .L15
+        movq    -88(%rbp), %rax
+        movl    -60(%rbp), %edx
+        movslq  %edx, %rdx
+        movl    (%rax,%rdx,4), %ecx
+        movq    -104(%rbp), %rax
+        movl    -56(%rbp), %edx
+        movslq  %edx, %rdx
+        movl    %ecx, (%rax,%rdx,4)
+        addl    $1, -56(%rbp)
+.L15:
+        addl    $1, -60(%rbp)
+.L14:
+        movl    -60(%rbp), %eax
+        cmpl    -68(%rbp), %eax
+        jl      .L16
+        movl    $0, -64(%rbp)
+        jmp     .L17
+.L18:
+        movq    -104(%rbp), %rax
+        movl    -64(%rbp), %edx
+        movslq  %edx, %rdx
+        movl    (%rax,%rdx,4), %eax
+        movl    %eax, %esi
+        movl    $.LC4, %edi
+        movl    $0, %eax
+        call    printf
+        addl    $1, -64(%rbp)
+.L17:
+        movl    -64(%rbp), %eax
+        cmpl    -56(%rbp), %eax
+        jl      .L18
+        movl    $0, %eax
+        movq    %rbx, %rsp
+        leaq    -40(%rbp), %rsp
+        popq    %rbx
+        popq    %r12
+        popq    %r13
+        popq    %r14
+        popq    %r15
+        popq    %rbp
+        ret
